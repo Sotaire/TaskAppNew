@@ -1,12 +1,14 @@
 package com.example.taskapp;
 
 import android.app.Dialog;
+import android.app.TaskStackBuilder;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -26,7 +28,6 @@ import androidx.navigation.ui.NavigationUI;
 import java.io.IOException;
 
 public class MainActivity extends AppCompatActivity implements ImageListener {
-    boolean isTrue;
     NavController navController;
     AppBarConfiguration appBarConfiguration;
     ImageView imageView;
@@ -41,9 +42,10 @@ public class MainActivity extends AppCompatActivity implements ImageListener {
         appBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_notifications)
                 .build();
+        
         navController = Navigation.findNavController(this, R.id.nav_host_fragment);
-       // boolean isShown = new Prefs(this).isShown();
-       // if (!isShown)
+        boolean isShown = new Prefs(this).isShown();
+        if (!isShown)
         navController.navigate(R.id.boardFragment);
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(navView, navController);
@@ -84,5 +86,6 @@ public class MainActivity extends AppCompatActivity implements ImageListener {
                 }
         }
     }
+
 
 }

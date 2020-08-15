@@ -62,4 +62,5 @@ public class BoardFragment extends Fragment implements OnViewListener {
         NavController navController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment);
         navController.navigate(R.id.action_navigation_home_to_formFragment);
     }
+
 }
